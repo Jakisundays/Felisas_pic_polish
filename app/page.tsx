@@ -1,11 +1,12 @@
-'use client'
-import { ImageEditorComponent } from "@/components/image-editor";
+"use client";
+import dynamic from "next/dynamic";
 
+const ImageEditorComponent = dynamic(
+  () =>
+    import("@/components/image-editor").then((mod) => mod.ImageEditorComponent),
+  { ssr: false, suspense: true, loading: () => <p>Loading...</p> }
+);
 
 export default function Home() {
-  if (typeof window !== "undefined") {
-    // Client-side-only code
-    return <ImageEditorComponent />;
-  }
-  return <div>Loading...</div>
+  return <ImageEditorComponent />;
 }
