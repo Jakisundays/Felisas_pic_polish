@@ -26,16 +26,6 @@ import {
 } from "./ui/card";
 
 export function ImageEditorComponent() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null; // or a loading indicator
-  }
-
   const [image, setImage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState("add-watermark");
   const [watermarkOpacity, setWatermarkOpacity] = useState(80);
